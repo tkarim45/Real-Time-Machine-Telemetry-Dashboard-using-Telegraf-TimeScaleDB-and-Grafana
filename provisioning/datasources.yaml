@@ -1,0 +1,11 @@
+datasources:
+  - name: TimescaleDB
+    type: postgres
+    access: proxy
+    url: v9ngiiblaf.yuvzniaf6z.tsdb.cloud.timescale.com:36247
+    database: tsdb
+    user: tsdbadmin
+    password: o4m2ggfdbfh7hf6j
+    jsonData:
+      postgresVersion: 1200
+      sslmode: "disable"

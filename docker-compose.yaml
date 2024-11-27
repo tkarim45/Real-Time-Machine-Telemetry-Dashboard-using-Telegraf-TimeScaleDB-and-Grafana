@@ -1,0 +1,36 @@
+services:
+  timescaledb:
+    image: timescale/timescaledb:latest-pg14
+    container_name: timescaledb
+    environment:
+      POSTGRES_USER: tsdbadmin
+      POSTGRES_PASSWORD: o4m2ggfdbfh7hf6j
+      POSTGRES_DB: tsdb
+    ports:
+      - "36247:36247"
+    volumes:
+      - timescaledb_data:/var/lib/postgresql/data
+
+  telegraf:
+    image: telegraf:latest
+    container_name: telegraf
+    depends_on:
+      - timescaledb
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=Ft@200922@ft
+    volumes:
+      - ./provisioning:/etc/grafana/provisioning
+    depends_on:
+      - timescaledb
+
+volumes:
+  timescaledb_data:
