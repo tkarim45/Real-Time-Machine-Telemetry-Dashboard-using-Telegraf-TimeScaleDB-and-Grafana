@@ -22,3 +22,5 @@ rad.json
 TestResults.xml
 
 .env
+
+telegraf(main).conf
