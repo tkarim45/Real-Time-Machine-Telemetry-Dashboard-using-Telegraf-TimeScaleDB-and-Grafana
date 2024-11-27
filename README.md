@@ -125,17 +125,6 @@ This project demonstrates a real-time weather analytics pipeline using the follo
 
 ---
 
-## Technologies Used
-
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
-![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
-![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white)
-![Telegraf](https://img.shields.io/badge/telegraf-%2358A4B0.svg?style=for-the-badge&logo=telegraf&logoColor=white)
-![TimescaleDB](https://img.shields.io/badge/timescaledb-%23316192.svg?style=for-the-badge&logo=timescaledb&logoColor=white)
-
----
-
 ## Docker
 
 ### Prerequisites
@@ -151,27 +140,15 @@ This project demonstrates a real-time weather analytics pipeline using the follo
    docker compose up -d
    ```
 
-2. Access Grafana in your browser:
+---
 
-   ```bash
-    http://localhost:3000
-   ```
+## Technologies Used
 
-3. Log in with the default credentials:
-
-   - Username: `admin`
-   - Password: `admin`
-
-4. Add the TimescaleDB data source:
-
-   - Go to `Configuration > Data Sources`.
-   - Click on `Add data source`.
-   - Select `Postgresql` from the list of data sources.
-   - Configure the data source with the following credentials:
-
-     - Host: `timescaledb`
-     - Database: `weather`
-     - User: `postgres`
-     - Password: `password`
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white)
+![Telegraf](https://img.shields.io/badge/telegraf-%2358A4B0.svg?style=for-the-badge&logo=telegraf&logoColor=white)
+![TimescaleDB](https://img.shields.io/badge/timescaledb-%23316192.svg?style=for-the-badge&logo=timescaledb&logoColor=white)
 
 ---
