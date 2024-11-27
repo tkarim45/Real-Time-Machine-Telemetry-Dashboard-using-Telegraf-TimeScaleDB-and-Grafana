@@ -23,6 +23,7 @@ This project demonstrates a real-time weather analytics pipeline using the follo
 - [Setup](#setup)
 - [Technologies Used](#technologies-used)
 - [Usage](#usage)
+- [Docker](#docker)
 
 ---
 
@@ -30,7 +31,7 @@ This project demonstrates a real-time weather analytics pipeline using the follo
 
 ### Prerequisites
 
-- Python 3.8 or above
+- Python 3.9 or above
 - PostgreSQL with TimescaleDB extension
 - Grafana installed on your system
 - API key for OpenWeather API
@@ -70,6 +71,58 @@ This project demonstrates a real-time weather analytics pipeline using the follo
    - Install the TimescaleDB plugin.
    - Connect Grafana to the TimescaleDB database.
 
+### Setup Telegraf
+
+1. Install Telegraf:
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get install telegraf
+   ```
+
+2. Configure Telegraf:
+
+   - Replace the contents of the `telegraf.conf` file with the contents of `telegraf.conf` in this repository.
+   - Update the `urls` field in the `[[inputs.openweathermap]]` section with the cities you want to fetch weather data for.
+   - Update the `database` field in the `[[outputs.postgresql]]` section with your TimescaleDB database name.
+
+3. Start the Telegraf service:
+
+   ```bash
+    sudo service telegraf start
+   ```
+
+### Setup Grafana
+
+1. Start the Grafana server:
+
+   ```bash
+   sudo service grafana-server start
+   ```
+
+2. Open Grafana in your browser:
+
+   ```bash
+    http://localhost:3000
+   ```
+
+3. Log in with the default credentials:
+
+   - Username: `admin`
+   - Password: `admin`
+
+4. Add the TimescaleDB data source:
+
+- Go to `Configuration > Data Sources`.
+- Click on `Add data source`.
+- Select `Postgresql` from the list of data sources.
+- Configure the data source with the following credentials:
+
+  - Host: `timescaledb`
+  - Database: `weather`
+  - User: `postgres`
+  - Password: `password`
+
 ---
 
 ## Technologies Used
@@ -80,5 +133,45 @@ This project demonstrates a real-time weather analytics pipeline using the follo
 ![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white)
 ![Telegraf](https://img.shields.io/badge/telegraf-%2358A4B0.svg?style=for-the-badge&logo=telegraf&logoColor=white)
 ![TimescaleDB](https://img.shields.io/badge/timescaledb-%23316192.svg?style=for-the-badge&logo=timescaledb&logoColor=white)
+
+---
+
+## Docker
+
+### Prerequisites
+
+- Docker installed on your system
+- Docker Compose installed on your system
+
+### Usage
+
+1. Build the Docker containers:
+
+   ```bash
+   docker compose up -d
+   ```
+
+2. Access Grafana in your browser:
+
+   ```bash
+    http://localhost:3000
+   ```
+
+3. Log in with the default credentials:
+
+   - Username: `admin`
+   - Password: `admin`
+
+4. Add the TimescaleDB data source:
+
+   - Go to `Configuration > Data Sources`.
+   - Click on `Add data source`.
+   - Select `Postgresql` from the list of data sources.
+   - Configure the data source with the following credentials:
+
+     - Host: `timescaledb`
+     - Database: `weather`
+     - User: `postgres`
+     - Password: `password`
 
 ---
